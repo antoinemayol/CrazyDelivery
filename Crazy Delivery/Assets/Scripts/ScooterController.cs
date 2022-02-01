@@ -12,17 +12,16 @@ public class ScooterController : MonoBehaviour
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
-
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
+    
 
     [SerializeField] private WheelCollider frontWheelCollider;
     [SerializeField] private WheelCollider backWheelCollider;
 
     [SerializeField] private Transform frontWheelTransform;
     [SerializeField] private Transform backWheelTransform;
-    [SerializeField] private Transform steerTransform;
 
     private void FixedUpdate()
     {
@@ -41,13 +40,10 @@ public class ScooterController : MonoBehaviour
 
     private void HandleMotor()
     {
-        frontWheelCollider.motorTorque = verticalInput * motorForce;
+        backWheelCollider.motorTorque = verticalInput * motorForce;
         currentBreakForce = isBreaking ? breakForce : 0f;
-        if (isBreaking)
-        {
-            ApplyBreaking();
-        }
-    }
+        ApplyBreaking();   
+    } 
 
     private void ApplyBreaking()
     {
@@ -59,21 +55,22 @@ public class ScooterController : MonoBehaviour
     {
         currentSteerAngle = maxSteerAngle * horinzontalInput;
         frontWheelCollider.steerAngle = currentSteerAngle;
-    //    steerTransform.rotation = Quaternion.Euler(250,90,currentSteerAngle);
+        
     }
 
     private void UpdateWheels()
     {
-        UpdateSingleWheel(frontWheelCollider, frontWheelTransform);
-        UpdateSingleWheel(backWheelCollider, backWheelTransform);
+        UpdateSingleWheel(frontWheelCollider, frontWheelTransform,false);
+        UpdateSingleWheel(backWheelCollider, backWheelTransform,true);
     }
 
-    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform,bool backWheel)
     {
         Vector3 pos;
         Quaternion rot;
         wheelCollider.GetWorldPose(out pos, out rot);
-        wheelTransform.rotation = rot;
+        if(!backWheel)
+            wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
 }
