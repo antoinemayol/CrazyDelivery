@@ -12,17 +12,23 @@ public class ScooterController : MonoBehaviour
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
-    [SerializeField] private float motorForce;
+    [SerializeField] private float motorForce = 300f;
     [SerializeField] private float breakForce;
-    [SerializeField] private float maxSteerAngle;
+    [SerializeField] private float maxSteerAngle = 20f;
     
-
+    [SerializeField] private Transform centerOfMass;
+    private Rigidbody _rigidbody;
     [SerializeField] private WheelCollider frontWheelCollider;
     [SerializeField] private WheelCollider backWheelCollider;
 
     [SerializeField] private Transform frontWheelTransform;
     [SerializeField] private Transform backWheelTransform;
 
+    void Start() 
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.centerOfMass = centerOfMass.localPosition;
+    }
     private void FixedUpdate()
     {
         GetInput();
@@ -70,6 +76,8 @@ public class ScooterController : MonoBehaviour
         Quaternion rot;
         wheelCollider.GetWorldPose(out pos, out rot);
         if(!backWheel)
+            wheelTransform.rotation = rot*Quaternion.Euler(0,180,0);
+        else
             wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }

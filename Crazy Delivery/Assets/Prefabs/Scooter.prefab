@@ -289,6 +289,7 @@ Transform:
   - {fileID: 481928}
   - {fileID: 442288}
   - {fileID: 4967862041414873262}
+  - {fileID: 6390902643213364006}
   m_Father: {fileID: 463580}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -655,15 +656,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cde490a1438764eae0b2673d4e1585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 1000
+  motorForce: 300
   breakForce: 3000
-  maxSteerAngle: 30
+  maxSteerAngle: 20
+  centerOfMass: {fileID: 6390902643213364006}
+  _rigidbody: {fileID: 0}
   frontWheelCollider: {fileID: 8074043730961536278}
   backWheelCollider: {fileID: 1051885628496507150}
   frontWheelTransform: {fileID: 406572}
   backWheelTransform: {fileID: 475518}
-  steerTransform: {fileID: 8344149611812819499}
-  scooterTransform: {fileID: 0}
 --- !u!1 &193912
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,8 +882,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.148
   m_SuspensionSpring:
-    spring: 90000
-    damper: 9000
+    spring: 35000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -901,6 +902,36 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &2932191056453827499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6390902643213364006}
+  m_Layer: 0
+  m_Name: Center Of Mass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6390902643213364006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932191056453827499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0.378}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 485972}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7910637531677895665
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,8 +973,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.148
   m_SuspensionSpring:
-    spring: 90000
-    damper: 9000
+    spring: 35000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
