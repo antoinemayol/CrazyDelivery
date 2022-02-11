@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
         Instance = this;
     }
    [SerializeField] Menu[] menus;
-
+   
    public void OpenMenu(string menuName)
    {
        for (int i = 0; i < menus.Length; i++)
