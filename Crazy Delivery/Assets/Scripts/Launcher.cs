@@ -56,19 +56,18 @@ public class Launcher : MonoBehaviourPunCallbacks
             foreach (var player in PhotonNetwork.PlayerList)
             {
                     Instantiate(PlayerListPrefab, PlayerListContent).GetComponent<PlayerListItem>().Setup(player);
-            
             }
-        }
-        public void JoinRoom(RoomInfo info)
-        {
-            PhotonNetwork.JoinRoom(info.Name);
-            MenuManager.Instance.OpenMenu("Loading");
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             errorText.text = "Something went Crazy... \n Room Creation Failed \n Error Code " + message;
             MenuManager.Instance.OpenMenu("Error");
+        }
+   		public void JoinRoom(RoomInfo info)
+        {
+            PhotonNetwork.JoinRoom(info.Name);
+            MenuManager.Instance.OpenMenu("Loading");
         }
 
         public void LeaveRoom() 
@@ -87,10 +86,14 @@ public class Launcher : MonoBehaviourPunCallbacks
             {
                 Destroy(transform.gameObject);   
             }
-            foreach (var room in listroom)
-            {
-                Instantiate(roomListPrefab, roomListContent).GetComponent<RoomListItem>().Setup(room);
-            }
+            for (int i=0; i < listroom.Count; i++)
+			{
+				if (listroom[i].RemovedFromList)
+					{
+						continue;
+					}
+				Instantiate(roomListPrefab, roomListContent).GetComponent<RoomListItem>().Setup(listroom[i]);
+			}
         }
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {

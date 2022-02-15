@@ -9,10 +9,10 @@ public class RoomListItem : MonoBehaviour
 {
     [SerializeField] TMP_Text text;
     RoomInfo info;
-    public void Setup(RoomInfo roominfo)
+    public void Setup(RoomInfo _info)
     {
-        info = roominfo;
-        text.text = roominfo.Name;
+        info = _info;
+        text.text = _info.Name;
     }
 
     public void OnClick()
