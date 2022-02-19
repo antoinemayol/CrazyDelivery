@@ -53,10 +53,19 @@ public class Launcher : MonoBehaviourPunCallbacks
         public override void OnJoinedRoom()
         {
             MenuManager.Instance.OpenMenu("Room");
-            foreach (var player in PhotonNetwork.PlayerList)
+            roomNameText.text = PhotonNetwork.CurrentRoom.Name;
+            Player[] players = PhotonNetwork.PlayerList;
+
+            foreach (Transform child in PlayerListContent)
             {
-                    Instantiate(PlayerListPrefab, PlayerListContent).GetComponent<PlayerListItem>().Setup(player);
+                Destroy(child.gameObject);
             }
+
+            for (int i = 0; i < players.Count(); i++)
+            {
+                Instantiate(PlayerListPrefab, PlayerListContent).GetComponent<PlayerListItem>().Setup(players[i]);
+            }
+
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
