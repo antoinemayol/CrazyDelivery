@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Map.unity
-=======
-- path: Assets/Scenes/Scooter control testing.unity
->>>>>>> antoine
+- path: Assets/Scenes/Multiplayer 2.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
