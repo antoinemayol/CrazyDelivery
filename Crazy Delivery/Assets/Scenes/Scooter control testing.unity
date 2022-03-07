@@ -318,6 +318,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5214202703178104688, guid: 3813a5491d62c9048b4c5466b00ed841, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391927859154538022, guid: 3813a5491d62c9048b4c5466b00ed841, type: 3}
+      propertyPath: breakForce
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 8391927859154538022, guid: 3813a5491d62c9048b4c5466b00ed841, type: 3}
       propertyPath: motorForce
       value: 1000
