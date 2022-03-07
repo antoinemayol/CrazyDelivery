@@ -24,7 +24,6 @@ public class ScooterController : MonoBehaviour
     [SerializeField] private Transform frontWheelTransform;
     [SerializeField] private Transform backWheelTransform;
     [SerializeField] private Transform BIKE;
-
     void Start() 
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -36,9 +35,6 @@ public class ScooterController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        if ( Vector3.Angle( Vector3.up, BIKE.up ) < 10) {
-            BIKE.rotation = Quaternion.Slerp( BIKE.rotation, Quaternion.Euler( 0, BIKE.rotation.eulerAngles.y, 0 ), Time.deltaTime * 5 );
-        }
     }
 
     private void GetInput()
@@ -51,7 +47,11 @@ public class ScooterController : MonoBehaviour
     private void HandleMotor()
     {
         backWheelCollider.motorTorque = verticalInput * motorForce;
-        currentBreakForce = isBreaking ? breakForce : 0f;
+        currentBreakForce = isBreaking ? breakForce : 0f;   
+        if(verticalInput == 0)
+        {
+           currentBreakForce = 1 ;
+        }     
         ApplyBreaking();   
     } 
 
@@ -63,8 +63,12 @@ public class ScooterController : MonoBehaviour
 
     private void HandleSteering()
     {
-        currentSteerAngle = maxSteerAngle * horinzontalInput;
+        currentSteerAngle = maxSteerAngle * horinzontalInput *3;
         frontWheelCollider.steerAngle = currentSteerAngle;
+
+        if ( Vector3.Angle( Vector3.up, BIKE.up ) < 30) {
+            BIKE.rotation = Quaternion.Slerp( BIKE.rotation, Quaternion.Euler( 0, BIKE.rotation.eulerAngles.y, 0 ), Time.deltaTime * 10 );
+        }
         
     }
 
