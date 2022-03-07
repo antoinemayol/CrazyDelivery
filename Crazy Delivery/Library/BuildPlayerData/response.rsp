@@ -8,6 +8,7 @@
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Library\PlayerScriptAssemblies\PhotonRealtime.dll"
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Library\PlayerScriptAssemblies\UnityEngine.UI.dll"
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Library\PlayerScriptAssemblies\PhotonUnityNetworking.Utilities.dll"
+-a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Library\PlayerScriptAssemblies\Unity.Postprocessing.Runtime.dll"
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\AOT\Newtonsoft.Json.dll"
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Assets\Photon\PhotonLibs\Photon3Unity3D.dll"
 -a="C:\Users\Octopus\Documents\GitHub\CrazyDelivery\Crazy Delivery\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll"

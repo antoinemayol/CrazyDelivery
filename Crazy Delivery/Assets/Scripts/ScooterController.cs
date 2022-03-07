@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ScooterController : MonoBehaviour
+public class ScooterController : MonoBehaviourPunCallbacks
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -26,6 +26,7 @@ public class ScooterController : MonoBehaviour
     [SerializeField] private Transform backWheelTransform;
     [SerializeField] private Transform BIKE;
     PhotonView PV;
+    public bool dead = false;
     void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -37,6 +38,7 @@ public class ScooterController : MonoBehaviour
         {
             return;
         }
+        //
     }
     void Start() 
     {

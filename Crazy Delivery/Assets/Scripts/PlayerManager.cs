@@ -7,6 +7,7 @@ using System.IO;
 public class PlayerManager : MonoBehaviour
 {
     PhotonView PV;
+    GameObject controller;
 
     void Awake()
     {
@@ -19,10 +20,25 @@ public class PlayerManager : MonoBehaviour
             CreateController();
         }
     }
+    public void Update()
+    {
+        if (controller.transform.position.y < -10f)
+        {
+            Die();
+        }
+    }
     void CreateController()
     {
+        Transform spawnpoint = SpawnManager.Instance.GetSpawnPoint();
         Debug.Log("Instantiated Player Controller");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Scooter"), Vector3.zero, Quaternion.identity);
+        controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Scooter"), spawnpoint.position, spawnpoint.rotation);
+    }
+
+    public void Die()
+    {
+        PhotonNetwork.Destroy(controller);
+        CreateController();
+        
     }
 }
 
