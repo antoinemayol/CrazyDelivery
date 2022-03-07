@@ -22,10 +22,10 @@ public class PlayerManager : MonoBehaviour
     }
     public void Update()
     {
-        if (controller.transform.position.y < -10f)
+        /*if (controller.transform.position.y < -10f)
         {
             Die();
-        }
+        }*/
     }
     void CreateController()
     {
@@ -38,7 +38,5 @@ public class PlayerManager : MonoBehaviour
     {
         PhotonNetwork.Destroy(controller);
         CreateController();
-        
     }
 }
-

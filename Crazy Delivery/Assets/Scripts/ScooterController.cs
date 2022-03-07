@@ -88,6 +88,10 @@ public class ScooterController : MonoBehaviourPunCallbacks
     {
         currentSteerAngle = maxSteerAngle * horinzontalInput;
         frontWheelCollider.steerAngle = currentSteerAngle;
+        if ( Vector3.Angle( Vector3.up, BIKE.up ) < 30) 
+        {
+            BIKE.rotation = Quaternion.Slerp( BIKE.rotation, Quaternion.Euler( 0, BIKE.rotation.eulerAngles.y, 0 ), Time.deltaTime * 10 );
+        }
         
     }
 
