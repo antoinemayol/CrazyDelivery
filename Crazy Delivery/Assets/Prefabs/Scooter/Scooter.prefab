@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 6363373831723583096}
   - component: {fileID: 6361854111614252756}
   - component: {fileID: 8391927859154538022}
+  - component: {fileID: 3879692100778031410}
   m_Layer: 0
   m_Name: Scooter
   m_TagString: Untagged
@@ -651,6 +652,19 @@ MonoBehaviour:
   frontWheelTransform: {fileID: 406572}
   backWheelTransform: {fileID: 475518}
   BIKE: {fileID: 463580}
+--- !u!114 &3879692100778031410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238d11fcd9a63d84181e192198c55b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mission: {fileID: 8001837383687523025, guid: 11a16f009bd5e9d49aa56dbadb81074a, type: 3}
 --- !u!1 &193912
 GameObject:
   m_ObjectHideFlags: 0
