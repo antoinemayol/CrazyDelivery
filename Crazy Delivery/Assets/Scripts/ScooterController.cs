@@ -75,6 +75,10 @@ public class ScooterController : MonoBehaviourPunCallbacks
     {
         backWheelCollider.motorTorque = verticalInput * motorForce;
         currentBreakForce = isBreaking ? breakForce : 0f;
+        if(verticalInput == 0)
+        {
+           currentBreakForce = 1 ;
+        }  
         ApplyBreaking();   
     } 
 
