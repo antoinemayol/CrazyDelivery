@@ -26,7 +26,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     void Start()
     {
         Debug.Log("Connecting to Master");
-        PhotonNetwork.ConnectUsingSettings();
+        MenuManager.Instance.OpenMenu("Username");
     }
 
     public override void OnConnectedToMaster()
@@ -35,15 +35,19 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
-
+    public void ConnectToMaster()
+    {
+        PhotonNetwork.ConnectUsingSettings();
+    }
     public override void OnJoinedLobby()
     {
-        MenuManager.Instance.OpenMenu("Username");
+        MenuManager.Instance.OpenMenu("Title");
         Debug.Log("Joined Lobby");
     }
 
     public void CreateRoom()
     {
+        Debug.Log("Creating Room");
         if (string.IsNullOrEmpty(roomNameInputField.text))
         {
             return;
@@ -121,8 +125,13 @@ public class Launcher : MonoBehaviourPunCallbacks
                 Instantiate(PlayerListPrefab, PlayerListContent).GetComponent<PlayerListItem>().Setup(newPlayer);
         }
 
-        //public override void Matchmaking()
-        //{
-        //    JoinRoom(roomListPrefab, roomListContent);
-        //}
+        public void Matchmaking()
+        {
+            PhotonNetwork.JoinRandomRoom();
+            if (!PhotonNetwork.InRoom)
+            {
+                Debug.Log("No room");
+                MenuManager.Instance.OpenMenu("CreateRoom");
+            }
+        }
     }
