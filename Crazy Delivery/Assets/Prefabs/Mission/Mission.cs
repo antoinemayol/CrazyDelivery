@@ -8,6 +8,7 @@ public class Mission : MonoBehaviour
 {
     
     [SerializeField] public GameObject mission;
+    [SerializeField] public GameObject missionsCoordonates;
     public GameObject myMission;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,10 @@ public class Mission : MonoBehaviour
     public void SpawnMission()
     {
         var rnd = new System.Random();
-        myMission = Instantiate(mission, new Vector3(0, (float)0.6, (float) rnd.Next(-20,20)), Quaternion.identity);
+
+        Transform randomChild = missionsCoordonates.transform.GetChild(rnd.Next(missionsCoordonates.transform.childCount));
+
+        myMission = Instantiate(mission, new Vector3(randomChild.position.x, (float)0.6, randomChild.position.z), Quaternion.identity);
     }
 
     public void MissionDone()
