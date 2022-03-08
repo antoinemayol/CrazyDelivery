@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
+    public string prevmenu;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
    public void OpenMenu(Menu menu)
    {
+       prevmenu = menu.menuName;
        for (int i = 0; i < menus.Length; i++)
         {
             if (menus[i].open)

@@ -6,51 +6,26 @@ using Photon.Pun;
 
 public class PlayerNameManager : MonoBehaviour
 {
-    [SerializeField] TMP_InputField usernameInputCR;
-    [SerializeField] TMP_InputField usernameInputFR;
+    [SerializeField] TMP_InputField usernameInput;
     
     void Start()
     {
-        if (usernameInputCR != null)
-            {
-                if (PlayerPrefs.HasKey("username"))
-                {
-                    usernameInputCR.text = PlayerPrefs.GetString("username");
-                    PhotonNetwork.NickName = PlayerPrefs.GetString("username");
-                }
-                /*else
-                {
-                    usernameInputCR.text = "Player " + Random.Range(0, 10000).ToString("0000");
-                    OnUsernameInputValueChanged();
-                }*/
-                
-            }
-        else if (usernameInputFR != null)
-            {
-                if (PlayerPrefs.HasKey("username"))
-                {
-                    usernameInputFR.text = PlayerPrefs.GetString("username");
-                    PhotonNetwork.NickName = PlayerPrefs.GetString("username");
-                }
-                /*else
-                {
-                    usernameInputFR.text = "Player " + Random.Range(0, 10000).ToString("0000");
-                    OnUsernameInputValueChanged();
-                }*/
-            }
+        if (PlayerPrefs.HasKey("username"))
+        {
+            usernameInput.text = PlayerPrefs.GetString("username");
+            PhotonNetwork.NickName = PlayerPrefs.GetString("username");
+        }
+        else
+        {
+            usernameInput.text = "Player " + Random.Range(0, 10000).ToString("0000");
+            OnUsernameInputValueChanged();
+        }
+            
     }   
     public void OnUsernameInputValueChanged()
     {
-        if (usernameInputCR != null)
-        {
-            PhotonNetwork.NickName = usernameInputCR.text;
-            PlayerPrefs.SetString("username", usernameInputCR.text);
-        }
-        else if (usernameInputFR != null)
-        {
-            PhotonNetwork.NickName = usernameInputFR.text;
-            PlayerPrefs.SetString("username", usernameInputFR.text);
-        }
+        PhotonNetwork.NickName = usernameInput.text;
+        PlayerPrefs.SetString("username", usernameInput.text);
     }
 
 }
